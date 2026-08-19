@@ -1,0 +1,9 @@
+[project]
+name = "defensive-security-evidence-lab"
+version = "0.1.0"
+description = "Localhost-only defensive security exercises with synthetic data"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
