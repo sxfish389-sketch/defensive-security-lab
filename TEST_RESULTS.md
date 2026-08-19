@@ -27,3 +27,11 @@ Covered boundaries:
 
 GitHub Actions is configured to repeat the unit-test command after publication.
 
+## GitHub verification
+
+The first public workflow completed successfully on the same commit:
+
+- Workflow: `tests`
+- Commit: `e7384b06492e9a62f7aa10279d6f1463d79512fa`
+- Result: `success`
+- Run: https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32292234555

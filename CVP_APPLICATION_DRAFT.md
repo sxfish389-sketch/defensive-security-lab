@@ -15,9 +15,9 @@ document remediation without targeting third-party systems.
 The public repository contains the source, synthetic fixtures, authorization
 boundary, evidence index, and reproducible tests:
 
-- Repository: `PENDING_PUBLIC_REPOSITORY_URL`
+- Repository: https://github.com/sxfish389-sketch/defensive-security-lab
 - GitHub profile: https://github.com/sxfish389-sketch
-- Test workflow: `PENDING_GITHUB_ACTIONS_URL`
+- Test workflow: https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32292234555
 
 No CVE, employer, client, or professional-certification claim is made.
 
@@ -31,4 +31,3 @@ All work is restricted to localhost, reserved example addresses, synthetic
 authentication logs, and controlled filename fixtures. The web audit rejects
 non-loopback targets. I use Claude for defensive explanation, remediation, and
 regression-test development.
-

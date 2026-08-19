@@ -1,5 +1,7 @@
 # Defensive Security Evidence Lab
 
+[![tests](https://github.com/sxfish389-sketch/defensive-security-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/sxfish389-sketch/defensive-security-lab/actions/workflows/tests.yml)
+
 A small, reproducible defensive-security portfolio maintained by
 [`sxfish389-sketch`](https://github.com/sxfish389-sketch). The project uses only
 localhost targets, reserved example addresses, synthetic logs, and deliberately
@@ -62,4 +64,3 @@ approval. Any application should describe only work actually performed and
 understood by the applicant.
 
 The latest local verification record is in [TEST_RESULTS.md](TEST_RESULTS.md).
-
