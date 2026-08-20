@@ -42,8 +42,7 @@ not a record of prior security practice, and it is not presented as one.
 | Four training challenges completed across 3 classes, confirmed by the instance API | VERIFIED | `LAB_CHALLENGE_MATRIX.md`, `fixtures/challenge_matrix.json` |
 | Challenge-evidence validator: refuses non-loopback targets and stored secrets | VERIFIED | `challenge_evidence.py`, `tests/test_challenge_evidence.py` |
 | 124 passing unit tests, clean `ruff check` and `ruff format` | VERIFIED | `TEST_RESULTS.md` |
-| Historical CI run on commit `e7384b0`, conclusion `success` | VERIFIED | `actions/runs/32292234555` |
-| CI run covering the current revision | PENDING | not yet pushed |
+| Public CI run covering the full code/test revision `8d290e1`, conclusion `success` | VERIFIED | `actions/runs/32342424625` |
 | Interface-visible cyber safeguard flag + Opus 5→4.8 downgrade (no log ID) | VERIFIED (self-reported, re-observable) | `BLOCKED_REQUESTS.md` |
 | Course or certification | PENDING | applicant must add a real verification URL |
 | Independent third-party review of this code | PENDING | no issues, PRs, forks or stars exist |

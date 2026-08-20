@@ -93,8 +93,9 @@ someone" is exactly the difference a reviewer is looking for.
 
 ### 4. Sustained commit history
 
-**Status:** 3 commits within 93 minutes, then two further working sessions on
-the same day. Nothing pushed since the first three.
+**Status:** the public history, including the full evidence-lab revision, was
+created within roughly one day. That is reproducible work, but not a sustained
+track record.
 
 Continued genuine work over weeks is worth more than any single-session push.
 This accrues by working, not by backdating or padding commits.

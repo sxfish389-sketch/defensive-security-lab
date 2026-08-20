@@ -49,8 +49,7 @@ qualifier keeps the third from overstating.
 | Public repository, the applicant's own | https://github.com/sxfish389-sketch/defensive-security-lab | Yes |
 | 124 tests pass locally | `TEST_RESULTS.md` | Yes |
 | Clean lint and formatting | `uvx --from ruff==0.15.14 ruff check .` | Yes |
-| Tests pass on a clean runner | historical run `32292234555` on commit `e7384b0` | Yes — for the *first* revision only |
-| CI covering the current revision | — | **No — not yet pushed** |
+| Full code/test revision passes on a clean runner | run `32342424625` on commit `8d290e1` | Yes — success across unit tests, lint, formatting and CLI smoke jobs |
 | Three defects found, fixed, and pinned | `SubstringRegressionTests`, `BurstWindowTests`, `SuccessResetTests` | Yes |
 | Sigma rules that actually evaluate | `tests/test_sigma_rules.py` | Yes |
 | A local authorized assessment was performed | `LAB_JUICE_SHOP_REPORT.md`, `fixtures/juice_shop_baseline.json` | Partly — the report and capture are checkable; the session itself was local and is not independently observable |

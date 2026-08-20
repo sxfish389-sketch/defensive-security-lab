@@ -69,8 +69,8 @@ generalisable, a Sigma rule validated against synthetic fixtures.
 
 - Repository: https://github.com/sxfish389-sketch/defensive-security-lab
 - GitHub profile: https://github.com/sxfish389-sketch
-- CI run on commit `e7384b0`, conclusion `success`:
-  https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32292234555
+- CI run on the full code/test revision `8d290e1`, conclusion `success`:
+  https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32342424625
 
 The repository contains eight defensive modules, 124 passing unit tests, a
 standard-library Sigma subset evaluator with three rules validated against

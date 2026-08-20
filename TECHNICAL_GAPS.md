@@ -188,5 +188,4 @@ CVP". It also, in phase 3, produced one honest optional-block-field observation
    maintainer controls. One artifact on a site the maintainer cannot edit — a
    CTF platform profile, an accepted VDP report, a merged security fix in
    someone else's repository — remains the single highest-value addition.
-6. **No CI run covers the current revision**, because nothing has been pushed.
-7. **Sustained history.** Two working sessions on one day is not a track record.
+6. **Sustained history.** Two working sessions on one day is not a track record.

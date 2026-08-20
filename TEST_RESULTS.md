@@ -81,13 +81,13 @@ originating outside the internal range.
 3.12 and 3.13; `ruff check` and `ruff format --check`; and a CLI smoke job that
 executes the bundled analyses, the filename triage, and the Sigma evaluation.
 
-### Historical record
+### Public CI record for this code/test revision
 
-The first public workflow run, before this revision:
-
-- Workflow `tests`, commit `e7384b06492e9a62f7aa10279d6f1463d79512fa`
+- Workflow `tests`, commit `8d290e1a2aa97c0eabd99cbd51ebb42e0d11b40e`
 - Result `success`
-- https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32292234555
+- https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32342424625
 
-The revision described above has **not** yet been pushed, so no CI run covers it
-at the time of writing.
+That public run covers all eight modules, all 124 tests, the three-version test
+matrix, lint, formatting, and CLI smoke checks described above. A later
+documentation-only commit may record this result without changing the tested
+code.
