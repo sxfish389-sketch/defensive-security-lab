@@ -21,7 +21,7 @@ The target boundary is checked in code before any request is issued:
 ```python
 # defensive_security_lab/local_header_audit.py
 def fetch_and_audit(url: str, timeout: float = 3.0) -> dict[str, list[str]]:
-    require_loopback_url(url)   # raises for anything that is not loopback
+    require_loopback_url(url)  # raises for anything that is not loopback
     ...
 ```
 
