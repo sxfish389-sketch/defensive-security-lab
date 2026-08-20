@@ -1,0 +1,26 @@
+title: Authentication Failure From Outside The Documented Lab Range
+id: 3a5e8c11-7d64-42b9-b0f3-9e1a6c25d7f4
+status: experimental
+description: >
+  Selects authentication failures whose source falls outside the reserved
+  documentation range this lab uses for internal traffic. Exercises an
+  exclusion condition rather than an aggregation.
+author: sxfish389-sketch
+date: 2026/08/20
+logsource:
+    product: lab
+    service: auth
+detection:
+    selection:
+        result: failure
+    internal:
+        source_ip|startswith: 192.0.2.
+    condition: selection and not internal
+fields:
+    - source_ip
+    - user
+falsepositives:
+    - Remote lab access deliberately originating outside the internal range
+level: low
+tags:
+    - attack.credential_access

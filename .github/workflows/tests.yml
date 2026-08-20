@@ -10,9 +10,47 @@ permissions:
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+  static-checks:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - run: python -m unittest discover -s tests -v
+      # ruff is a development tool only; the package itself has no runtime
+      # dependencies and the Sigma evaluator is written against the standard
+      # library for that reason.
+      - name: Install linter
+        run: pip install ruff==0.15.14
+      - name: Lint
+        run: ruff check .
+      - name: Check formatting
+        run: ruff format --check .
+
+  cli-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Bundled analyses
+        run: python -m defensive_security_lab all
+      - name: Filename triage reproduces the documented lab exercise
+        run: |
+          python -m defensive_security_lab explain \
+            report.vtt notes.txt ../payload.mp4 nested/file.log .hidden.md
+      - name: Sigma rules evaluate against the fixtures
+        run: python -m defensive_security_lab sigma

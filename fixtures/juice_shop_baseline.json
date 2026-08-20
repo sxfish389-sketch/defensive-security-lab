@@ -1,0 +1,22 @@
+{
+  "_comment": "Response captured from an authorized local OWASP Juice Shop instance. Volatile headers removed so the capture replays deterministically.",
+  "captured_at": "2026-08-19T20:35:15.532562+00:00",
+  "target_software": "OWASP Juice Shop 20.2.0",
+  "target_commit": "1618a611b173b4bf114028e6e02549950606e29d",
+  "authorization": "Deliberately vulnerable application published for security training; run locally, bound to 127.0.0.1 only.",
+  "url": "http://127.0.0.1:3000/",
+  "status": 200,
+  "headers": {
+    "Access-Control-Allow-Origin": "*",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Feature-Policy": "payment 'self'",
+    "X-Recruiting": "/#/jobs",
+    "Content-Type": "text/html; charset=UTF-8"
+  },
+  "expected_finding_ids": [
+    "cors-wildcard-origin",
+    "missing-csp",
+    "missing-referrer-policy"
+  ]
+}

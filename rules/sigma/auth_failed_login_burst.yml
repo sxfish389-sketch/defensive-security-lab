@@ -1,0 +1,28 @@
+title: Repeated Authentication Failures Against One Account
+id: 6f1c2a94-3b57-4d18-9e02-5a7c81de44b1
+status: experimental
+description: >
+  Detects an account accumulating repeated authentication failures inside a
+  short window. Evaluated against synthetic lab fixtures only. The window
+  matters: the same number of failures spread over hours is ordinary user
+  error, not an attack.
+author: sxfish389-sketch
+date: 2026/08/20
+logsource:
+    product: lab
+    service: auth
+detection:
+    selection:
+        result: failure
+    condition: selection | count() by user > 2
+    timeframe: 5m
+fields:
+    - user
+    - source_ip
+falsepositives:
+    - A user repeatedly retrying a forgotten password
+    - An expired stored credential in an automated job
+level: medium
+tags:
+    - attack.credential_access
+    - attack.t1110.001

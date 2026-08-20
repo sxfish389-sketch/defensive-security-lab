@@ -1,9 +1,20 @@
 [project]
 name = "defensive-security-evidence-lab"
-version = "0.1.0"
+version = "0.2.0"
 description = "Localhost-only defensive security exercises with synthetic data"
 requires-python = ">=3.10"
 
+# No runtime dependencies. The Sigma loader and evaluator in
+# defensive_security_lab/sigma.py exist so that rule evaluation stays inside the
+# standard library rather than pulling in PyYAML.
+dependencies = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-

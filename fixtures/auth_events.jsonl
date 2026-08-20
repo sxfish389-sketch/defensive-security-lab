@@ -1,6 +1,8 @@
-{"timestamp":"2026-08-20T00:00:01Z","user":"lab-user","source_ip":"203.0.113.42","result":"failure","note":"synthetic event for malware.test"}
+{"timestamp":"2026-08-20T00:00:01Z","user":"lab-user","source_ip":"203.0.113.42","result":"failure","note":"synthetic event referencing malware.test"}
 {"timestamp":"2026-08-20T00:00:10Z","user":"lab-user","source_ip":"203.0.113.42","result":"failure","note":"synthetic event"}
 {"timestamp":"2026-08-20T00:00:20Z","user":"lab-user","source_ip":"203.0.113.42","result":"failure","note":"synthetic event"}
 {"timestamp":"2026-08-20T00:00:30Z","user":"lab-user","source_ip":"203.0.113.42","result":"success","note":"synthetic event"}
 {"timestamp":"2026-08-20T00:05:00Z","user":"normal-user","source_ip":"192.0.2.10","result":"success","note":"synthetic control event"}
-
+{"timestamp":"2026-08-20T01:00:00Z","user":"slow-user","source_ip":"203.0.113.77","result":"failure","note":"negative control: gaps exceed the window"}
+{"timestamp":"2026-08-20T01:10:00Z","user":"slow-user","source_ip":"203.0.113.77","result":"failure","note":"negative control"}
+{"timestamp":"2026-08-20T01:20:00Z","user":"slow-user","source_ip":"203.0.113.77","result":"failure","note":"negative control"}

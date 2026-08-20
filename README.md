@@ -2,41 +2,62 @@
 
 [![tests](https://github.com/sxfish389-sketch/defensive-security-lab/actions/workflows/tests.yml/badge.svg)](https://github.com/sxfish389-sketch/defensive-security-lab/actions/workflows/tests.yml)
 
-A small, reproducible defensive-security portfolio maintained by
-[`sxfish389-sketch`](https://github.com/sxfish389-sketch). The project uses only
-localhost targets, reserved example addresses, synthetic logs, and deliberately
-constructed fixtures.
+A reproducible defensive-security lab maintained by
+[`sxfish389-sketch`](https://github.com/sxfish389-sketch). Every target is a
+loopback address, a reserved documentation range, or a fixture written for this
+repository. There are no third-party runtime dependencies.
 
-The repository demonstrates six common defensive-security workflows without
-claiming a CVE, professional certification, employer, client engagement, or
-third-party discovery credit.
+It makes no claim to a CVE, certification, employer, client engagement, or
+credit for research published by anyone else.
+
+**Age and scope, stated up front.** This repository was created on 2026-08-19
+while preparing a Cyber Verification Program application. It is new work, not a
+record of prior practice. See [EVIDENCE.md](EVIDENCE.md) for what it does and
+does not establish.
+
+## What is implemented
+
+| Module | What it does |
+|---|---|
+| `path_guard.py` | Validates a filename against a traversal, encoding, platform-quirk and extension policy; returns a machine-readable rejection reason |
+| `ioc_matcher.py` | Boundary-anchored indicator matching with defang normalisation, CIDR containment, hash typing, and allowlist suppression |
+| `incident_timeline.py` | Sliding-window authentication triage: failure bursts, success-after-failures, password spraying |
+| `local_header_audit.py` | Reviews response security headers, rejecting any target that is not loopback |
+| `sigma.py` | A strict Sigma-subset loader and evaluator, written against the standard library so rules stay executable without PyYAML |
+| `web_assessment.py` | Security-header review with real depth: CSP directive weaknesses, HSTS lifetime, cookie attributes, permissive CORS, and stack disclosure |
+| `challenge_evidence.py` | Schema and validator for local training-challenge evidence: refuses non-loopback targets, secrets, or records missing remediation |
+
+Detection rules live in [`rules/sigma/`](rules/sigma) and are evaluated against
+fixtures by the test suite, not merely shipped as text.
+
+## Three defects this lab found in itself
+
+Each was reproduced before it was fixed, and each is now pinned by regressions:
+
+1. **Indicator false positives.** `indicator in text` reported `1.2.3.4` as
+   present in `11.2.3.45`, and `evil.com` in `notevil.com.br`. Matching is now
+   anchored on token and label boundaries.
+2. **A burst with no time window.** Three failures spread across a year were
+   reported as a burst. A burst is a rate, so failures are now counted inside a
+   sliding window whose boundary is tested explicitly.
+3. **A counter that survived success.** The failure list was never cleared after
+   a successful login, so a later single failure re-fired the alert on stale
+   history. A success now closes the episode.
 
 ## Safety scope
 
-- No Internet targets are scanned.
-- The web-audit command rejects non-loopback hosts.
-- All indicators and authentication events are synthetic.
-- Path-traversal examples operate on strings and temporary fixtures only.
-- Results are intended for learning, regression testing, and defensive review.
+- No Internet target is ever contacted; `require_loopback_url` enforces this in
+  code before any request is issued.
+- All indicators, authentication events and filenames are synthetic.
+- No malware sample is executed, unpacked or stored.
 
-See [AUTHORIZATION.md](AUTHORIZATION.md) and [ETHICS.md](ETHICS.md) before using
-the project.
-
-## Demonstrated workflows
-
-| Area | Reproducible artifact |
-|---|---|
-| Authorized testing | Localhost-only HTTP security-header audit |
-| Vulnerability research | CWE-22-style filename boundary regression tests |
-| Threat analysis | Synthetic IOC matching using reserved indicators |
-| Incident response | Timeline and failed-login burst analysis |
-| Security tool development | Standard-library Python CLI with unit tests |
-| CTF / lab research | Safe filename-triage challenge and documented solution |
+Read [AUTHORIZED_SCOPE.md](AUTHORIZED_SCOPE.md) and
+[THREAT_MODEL.md](THREAT_MODEL.md) before using the project. Nothing here is
+authorization to test anything you do not own.
 
 ## Run locally
 
-Python 3.10 or newer is recommended. The project has no third-party runtime
-dependencies.
+Python 3.10 or newer.
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -46,21 +67,56 @@ python3 -m defensive_security_lab all
 Individual commands:
 
 ```bash
-python3 -m defensive_security_lab path report.vtt ../payload.mp4
+python3 -m defensive_security_lab explain report.vtt ../payload.mp4 CON.txt
 python3 -m defensive_security_lab ioc fixtures/iocs.json fixtures/auth_events.jsonl
-python3 -m defensive_security_lab incident fixtures/auth_events.jsonl
+python3 -m defensive_security_lab incident fixtures/auth_events_spray.jsonl
 python3 -m defensive_security_lab headers --fixture fixtures/http_headers.json
+python3 -m defensive_security_lab sigma
+python3 -m defensive_security_lab assess --capture fixtures/juice_shop_baseline.json
+python3 -m defensive_security_lab challenges
 ```
+
+### Local training-range assessment
+
+`LAB_JUICE_SHOP_REPORT.md` records a bounded assessment of a local OWASP Juice
+Shop instance — a deliberately vulnerable application published for security
+training. It documents the authorization basis, a one-line patch that was
+required because the upstream project binds `0.0.0.0` with no supported way to
+change it, three independent verifications that the service was reachable only
+on loopback, and exactly what was and was not achieved.
+
+`LAB_CHALLENGE_MATRIX.md` records four official training challenges completed
+against that instance across three vulnerability classes (Injection, Broken
+Access Control, XSS), each with the upstream root cause and a written
+remediation. Payloads are masked and the records are validated in code to contain
+no secrets and no non-loopback target.
+
+Neither the third-party source nor its dependencies are committed here.
+
+Static checks. ruff is a development tool only, and it is deliberately invoked
+through `uvx` at a pinned version so the commands work without ruff being
+installed or on `PATH`:
+
+```bash
+uvx --from ruff==0.15.14 ruff check .
+```
+
+```bash
+uvx --from ruff==0.15.14 ruff format --check .
+```
+
+If you already have that exact version installed and on `PATH`, plain
+`ruff check .` is equivalent — but do not assume it resolves.
 
 ## Evidence status
 
-The code, fixtures, tests, and reports in this repository are reproducible
-portfolio evidence. Items that depend on an external event—such as an actual
-Claude safeguard block, a course certificate, or an independent disclosure—are
-explicitly marked `PENDING` in [EVIDENCE.md](EVIDENCE.md).
+124 unit tests pass locally; see [TEST_RESULTS.md](TEST_RESULTS.md). Items that
+depend on an external event — a certificate, an independent disclosure, a
+server-side log ID — are marked `PENDING` in [EVIDENCE.md](EVIDENCE.md) rather
+than asserted. One safeguard event has actually been observed in the interface
+(a flag and an Opus 5 → Opus 4.8 downgrade, no log ID) and is recorded in
+[BLOCKED_REQUESTS.md](BLOCKED_REQUESTS.md).
 
-This repository is not proof of CVP eligibility by itself and does not guarantee
-approval. Any application should describe only work actually performed and
-understood by the applicant.
-
-The latest local verification record is in [TEST_RESULTS.md](TEST_RESULTS.md).
+This repository is not proof of CVP eligibility by itself and does not
+guarantee approval. Any application should describe only work actually performed
+and understood by the applicant.

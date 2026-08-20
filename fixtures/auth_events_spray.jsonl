@@ -1,0 +1,5 @@
+{"timestamp":"2026-08-20T02:00:00Z","user":"alice","source_ip":"198.51.100.9","result":"failure","note":"synthetic spray"}
+{"timestamp":"2026-08-20T02:00:20Z","user":"bob","source_ip":"198.51.100.9","result":"failure","note":"synthetic spray"}
+{"timestamp":"2026-08-20T02:00:40Z","user":"carol","source_ip":"198.51.100.9","result":"failure","note":"synthetic spray"}
+{"timestamp":"2026-08-20T02:01:00Z","user":"dave","source_ip":"198.51.100.9","result":"failure","note":"synthetic spray"}
+{"timestamp":"2026-08-20T02:02:00Z","user":"erin","source_ip":"192.0.2.10","result":"success","note":"synthetic control event"}

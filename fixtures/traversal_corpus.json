@@ -1,0 +1,194 @@
+[
+  {
+    "group": "allowed baseline",
+    "name": "report.vtt",
+    "expected_verdict": "allowed",
+    "expected_reason": "policy_satisfied"
+  },
+  {
+    "group": "allowed baseline",
+    "name": "notes.txt",
+    "expected_verdict": "allowed",
+    "expected_reason": "policy_satisfied"
+  },
+  {
+    "group": "allowed baseline",
+    "name": "data.json",
+    "expected_verdict": "allowed",
+    "expected_reason": "policy_satisfied"
+  },
+  {
+    "group": "allowed baseline",
+    "name": "readme.md",
+    "expected_verdict": "allowed",
+    "expected_reason": "policy_satisfied"
+  },
+  {
+    "group": "allowed baseline",
+    "name": "app.log",
+    "expected_verdict": "allowed",
+    "expected_reason": "policy_satisfied"
+  },
+  {
+    "group": "negative control: reserved-name prefix must still pass",
+    "name": "console.txt",
+    "expected_verdict": "allowed",
+    "expected_reason": "policy_satisfied"
+  },
+  {
+    "group": "path separators and traversal",
+    "name": "../payload.mp4",
+    "expected_verdict": "rejected",
+    "expected_reason": "path_separator"
+  },
+  {
+    "group": "path separators and traversal",
+    "name": "..\\payload.mp4",
+    "expected_verdict": "rejected",
+    "expected_reason": "path_separator"
+  },
+  {
+    "group": "path separators and traversal",
+    "name": "nested/file.log",
+    "expected_verdict": "rejected",
+    "expected_reason": "path_separator"
+  },
+  {
+    "group": "path separators and traversal",
+    "name": "nested\\file.log",
+    "expected_verdict": "rejected",
+    "expected_reason": "path_separator"
+  },
+  {
+    "group": "path separators and traversal",
+    "name": "/tmp/report.txt",
+    "expected_verdict": "rejected",
+    "expected_reason": "path_separator"
+  },
+  {
+    "group": "path separators and traversal",
+    "name": "..",
+    "expected_verdict": "rejected",
+    "expected_reason": "traversal"
+  },
+  {
+    "group": "path separators and traversal",
+    "name": ".",
+    "expected_verdict": "rejected",
+    "expected_reason": "not_a_bare_name"
+  },
+  {
+    "group": "hidden names",
+    "name": ".hidden.md",
+    "expected_verdict": "rejected",
+    "expected_reason": "hidden"
+  },
+  {
+    "group": "percent and double encoding",
+    "name": "..%2fpayload.txt",
+    "expected_verdict": "rejected",
+    "expected_reason": "percent_encoded"
+  },
+  {
+    "group": "percent and double encoding",
+    "name": "%2e%2e%2fetc%2fpasswd",
+    "expected_verdict": "rejected",
+    "expected_reason": "percent_encoded"
+  },
+  {
+    "group": "percent and double encoding",
+    "name": "%252e%252e%252fboot.txt",
+    "expected_verdict": "rejected",
+    "expected_reason": "percent_encoded"
+  },
+  {
+    "group": "percent and double encoding",
+    "name": "%2E%2E/report.txt",
+    "expected_verdict": "rejected",
+    "expected_reason": "percent_encoded"
+  },
+  {
+    "group": "null byte and control characters",
+    "name": "report.vtt\u0000.exe",
+    "expected_verdict": "rejected",
+    "expected_reason": "nul_byte"
+  },
+  {
+    "group": "null byte and control characters",
+    "name": "report\u0007.txt",
+    "expected_verdict": "rejected",
+    "expected_reason": "control_character"
+  },
+  {
+    "group": "windows reserved device names",
+    "name": "CON.txt",
+    "expected_verdict": "rejected",
+    "expected_reason": "reserved_device_name"
+  },
+  {
+    "group": "windows reserved device names",
+    "name": "con",
+    "expected_verdict": "rejected",
+    "expected_reason": "reserved_device_name"
+  },
+  {
+    "group": "windows reserved device names",
+    "name": "nul.log",
+    "expected_verdict": "rejected",
+    "expected_reason": "reserved_device_name"
+  },
+  {
+    "group": "windows reserved device names",
+    "name": "com1.txt",
+    "expected_verdict": "rejected",
+    "expected_reason": "reserved_device_name"
+  },
+  {
+    "group": "windows reserved device names",
+    "name": "LPT9.md",
+    "expected_verdict": "rejected",
+    "expected_reason": "reserved_device_name"
+  },
+  {
+    "group": "alternate data stream",
+    "name": "file.txt:hidden",
+    "expected_verdict": "rejected",
+    "expected_reason": "alternate_data_stream"
+  },
+  {
+    "group": "trailing dots and spaces",
+    "name": "report.txt ",
+    "expected_verdict": "rejected",
+    "expected_reason": "trailing_dot_or_space"
+  },
+  {
+    "group": "trailing dots and spaces",
+    "name": "report.txt.",
+    "expected_verdict": "rejected",
+    "expected_reason": "trailing_dot_or_space"
+  },
+  {
+    "group": "trailing dots and spaces",
+    "name": "report.txt..",
+    "expected_verdict": "rejected",
+    "expected_reason": "trailing_dot_or_space"
+  },
+  {
+    "group": "extension allowlist",
+    "name": "payload.exe",
+    "expected_verdict": "rejected",
+    "expected_reason": "extension"
+  },
+  {
+    "group": "extension allowlist",
+    "name": "report",
+    "expected_verdict": "rejected",
+    "expected_reason": "extension"
+  },
+  {
+    "group": "extension allowlist",
+    "name": "archive.tar.gz",
+    "expected_verdict": "rejected",
+    "expected_reason": "extension"
+  }
+]

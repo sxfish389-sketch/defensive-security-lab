@@ -1,0 +1,122 @@
+[
+  {
+    "name": "exact ipv4 match",
+    "text": "connection to 203.0.113.42 observed",
+    "expect": {
+      "domains": [],
+      "ips": [
+        "203.0.113.42"
+      ],
+      "hashes": []
+    }
+  },
+  {
+    "name": "regression A1: substring ip must not match",
+    "text": "connection to 11.2.3.45 observed",
+    "expect": {
+      "domains": [],
+      "ips": [],
+      "hashes": []
+    }
+  },
+  {
+    "name": "exact domain match",
+    "text": "beacon to malware.test every 60s",
+    "expect": {
+      "domains": [
+        "malware.test"
+      ],
+      "ips": [],
+      "hashes": []
+    }
+  },
+  {
+    "name": "regression A1: domain prefix must not match",
+    "text": "visited notmalware.test today",
+    "expect": {
+      "domains": [],
+      "ips": [],
+      "hashes": []
+    }
+  },
+  {
+    "name": "regression A1: domain suffix must not match",
+    "text": "visited malware.test.br today",
+    "expect": {
+      "domains": [],
+      "ips": [],
+      "hashes": []
+    }
+  },
+  {
+    "name": "defanged domain is normalised",
+    "text": "beacon to malware[.]test",
+    "expect": {
+      "domains": [
+        "malware.test"
+      ],
+      "ips": [],
+      "hashes": []
+    }
+  },
+  {
+    "name": "defanged scheme is normalised",
+    "text": "fetched hxxps://evil.test/a",
+    "expect": {
+      "domains": [
+        "evil.test"
+      ],
+      "ips": [],
+      "hashes": []
+    }
+  },
+  {
+    "name": "cidr containment",
+    "text": "inbound from 198.51.100.9",
+    "expect": {
+      "domains": [],
+      "ips": [
+        "198.51.100.0/24"
+      ],
+      "hashes": []
+    }
+  },
+  {
+    "name": "cidr non-member",
+    "text": "inbound from 198.51.101.9",
+    "expect": {
+      "domains": [],
+      "ips": [],
+      "hashes": []
+    }
+  },
+  {
+    "name": "sha256 hash match",
+    "text": "sample 0000000000000000000000000000000000000000000000000000000000000042 seen",
+    "expect": {
+      "domains": [],
+      "ips": [],
+      "hashes": [
+        "0000000000000000000000000000000000000000000000000000000000000042"
+      ]
+    }
+  },
+  {
+    "name": "hash embedded in a longer token must not match",
+    "text": "identifier ff0000000000000000000000000000000000000000000000000000000000000042ff",
+    "expect": {
+      "domains": [],
+      "ips": [],
+      "hashes": []
+    }
+  },
+  {
+    "name": "clean record",
+    "text": "routine health check from 192.0.2.10",
+    "expect": {
+      "domains": [],
+      "ips": [],
+      "hashes": []
+    }
+  }
+]
