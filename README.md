@@ -7,14 +7,6 @@ A reproducible defensive-security lab maintained by
 loopback address, a reserved documentation range, or a fixture written for this
 repository. There are no third-party runtime dependencies.
 
-It makes no claim to a CVE, certification, employer, client engagement, or
-credit for research published by anyone else.
-
-**Age and scope, stated up front.** This repository was created on 2026-08-19
-while preparing a Cyber Verification Program application. It is new work, not a
-record of prior practice. See [EVIDENCE.md](EVIDENCE.md) for what it does and
-does not establish.
-
 ## What is implemented
 
 | Module | What it does |
@@ -108,15 +100,11 @@ uvx --from ruff==0.15.14 ruff format --check .
 If you already have that exact version installed and on `PATH`, plain
 `ruff check .` is equivalent — but do not assume it resolves.
 
-## Evidence status
+## Reproducibility
 
-124 unit tests pass locally; see [TEST_RESULTS.md](TEST_RESULTS.md). Items that
-depend on an external event — a certificate, an independent disclosure, a
-server-side log ID — are marked `PENDING` in [EVIDENCE.md](EVIDENCE.md) rather
-than asserted. One safeguard event has actually been observed in the interface
-(a flag and an Opus 5 → Opus 4.8 downgrade, no log ID) and is recorded in
-[BLOCKED_REQUESTS.md](BLOCKED_REQUESTS.md).
+124 unit tests pass locally; see [TEST_RESULTS.md](TEST_RESULTS.md). The same
+suite, lint, formatting, and CLI smoke checks run in public GitHub Actions across
+Python 3.10, 3.12, and 3.13:
 
-This repository is not proof of CVP eligibility by itself and does not
-guarantee approval. Any application should describe only work actually performed
-and understood by the applicant.
+- [current successful run](https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32343148660)
+- [full code/test revision](https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32342424625)

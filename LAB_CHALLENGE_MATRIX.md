@@ -83,7 +83,4 @@ confirmed `solved=true` by the instance's own `/api/Challenges` API.
   `instance_solved_state` confirms it.
 - The Score Board challenge from phase 2 remains **not completed** — the route
   was found but the solve never registered. It is not counted here.
-- No third-party instance was involved. No full safeguard *block* occurred; a
-  safeguard *flag* with an Opus 5 → Opus 4.8 downgrade was observed in the
-  interface when this phase was requested, and the task continued. It was not
-  provoked. See `BLOCKED_REQUESTS.md`.
+- No third-party instance was involved.

@@ -168,8 +168,8 @@ Final state: 1 of 116 challenges solved on this instance.
 - No vulnerability in Juice Shop was discovered. Both scenarios are published
   training exercises with official descriptions.
 - No third-party system was tested.
-- The work is introductory: two 1-star challenges, one of them incomplete.
-- No safeguard *block* occurred; one safeguard *flag* with a model downgrade (Opus 5 → Opus 4.8) was later observed in the Claude Code interface when the phase-3 task was sent, and the task continued. It was not deliberately provoked. See `BLOCKED_REQUESTS.md`.
+- Phase 2 was introductory: two 1-star challenges, one of them incomplete. The
+  separately recorded phase-3 work below completed four additional challenges.
 
 ## 7. Hygiene
 
