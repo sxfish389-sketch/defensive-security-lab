@@ -51,7 +51,7 @@ reproducible one.
 
 ```bash
 uvx --from ruff==0.15.14 ruff check .          # All checks passed!
-uvx --from ruff==0.15.14 ruff format --check . # 12 files already formatted
+uvx --from ruff==0.15.14 ruff format --check . # 16 files already formatted
 python3 -m compileall -q defensive_security_lab tests   # OK
 ```
 
