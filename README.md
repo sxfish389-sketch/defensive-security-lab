@@ -106,5 +106,5 @@ If you already have that exact version installed and on `PATH`, plain
 suite, lint, formatting, and CLI smoke checks run in public GitHub Actions across
 Python 3.10, 3.12, and 3.13:
 
-- [current successful run](https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32343148660)
+- [workflow history and current status](https://github.com/sxfish389-sketch/defensive-security-lab/actions/workflows/tests.yml)
 - [full code/test revision](https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32342424625)
