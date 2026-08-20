@@ -87,7 +87,7 @@ executes the bundled analyses, the filename triage, and the Sigma evaluation.
 - Result `success`
 - https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32342424625
 
-That public run covers all eight modules, all 124 tests, the three-version test
+That public run covers all seven library modules plus the CLI, all 124 tests, the three-version test
 matrix, lint, formatting, and CLI smoke checks described above. A later
 documentation-only commit may record this result without changing the tested
 code.

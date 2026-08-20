@@ -8,7 +8,7 @@ with no row here has no evidence and must not be made.
 | Category | Artifact | Supported? | Select |
 |---|---|---|---|
 | **CTF / Lab / Research Environment** | the whole repository plus `LAB_JUICE_SHOP_REPORT.md` and `LAB_CHALLENGE_MATRIX.md`: synthetic fixtures, a loopback-bounded design, a traversal corpus, and four completed local training challenges | **Yes.** An accurate description of what this is. | ✅ |
-| **Security Tool Development** | 8 modules, 124 tests, a Sigma subset evaluator, a security-header analyzer, a challenge-evidence validator, three self-found defects with regressions, CI across three Python versions plus lint and CLI smoke jobs | **Yes, modestly.** Small but genuine. | ✅ |
+| **Security Tool Development** | 7 library modules plus a CLI, 124 tests, a Sigma subset evaluator, a security-header analyzer, a challenge-evidence validator, three self-found defects with regressions, CI across three Python versions plus lint and CLI smoke jobs | **Yes, modestly.** Small but genuine. | ✅ |
 | **Authorized Penetration Testing / Red Teaming** | `LAB_CHALLENGE_MATRIX.md`, `LAB_JUICE_SHOP_REPORT.md` §8-13, `challenge_evidence.py` | **Modestly — as an explicitly authorized local training assessment.** See below. | ✅* |
 | Threat Intelligence & Malware Analysis | `ioc_matcher.py` — defang normalisation, CIDR containment, hash typing, allowlist | **No.** Real indicator tooling, but every indicator is synthetic and no sample, feed, or telemetry has been handled. | ❌ |
 | Incident Response & Forensics | `incident_timeline.py`, three Sigma rules | **No.** Better detection logic, still zero real incidents. | ❌ |

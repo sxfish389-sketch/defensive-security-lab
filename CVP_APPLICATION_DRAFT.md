@@ -52,18 +52,12 @@ Three, all traceable to artifacts (full reasoning in `FORM_EVIDENCE_MAP.md`):
 > The field is phrased conditionally ("would use"), so a forward-looking answer
 > is what it asks for.
 
-I maintain a defensive lab whose targets are loopback addresses, reserved
-documentation ranges, and fixtures I write, plus a local OWASP Juice Shop
-instance I run for training. I would use Claude to review and harden my detection
-logic against what I actually observe. Concrete examples from this week: my
-indicator matcher tested `indicator in text`, so it reported `1.2.3.4` as present
-in the unrelated string `11.2.3.45`; my authentication triage counted failures
-with no time window, so three failures spread across a year registered as a
-burst, and it never reset after a successful login; and my security-header
-analyzer had no CORS check at all until a baseline capture from the local
-training range came back with `Access-Control-Allow-Origin: *` on every endpoint.
-Each of those became a fix plus regression tests, and where the pattern was
-generalisable, a Sigma rule validated against synthetic fixtures.
+I use Claude to reproduce and remediate known vulnerabilities in an OWASP Juice
+Shop instance I run locally on `127.0.0.1`, including authorized training
+exercises in SQL injection, broken access control, and stored XSS and tracing
+each exercise to its source-level root cause. I use the analysis to develop
+concrete fixes and regression tests in my defensive lab; the work is local,
+synthetic, non-destructive, and never targets third-party systems.
 
 ## Field: Help us verify your work
 
@@ -72,7 +66,7 @@ generalisable, a Sigma rule validated against synthetic fixtures.
 - CI run on the full code/test revision `8d290e1`, conclusion `success`:
   https://github.com/sxfish389-sketch/defensive-security-lab/actions/runs/32342424625
 
-The repository contains eight defensive modules, 124 passing unit tests, a
+The repository contains seven defensive library modules plus a CLI, 124 passing unit tests, a
 standard-library Sigma subset evaluator with three rules validated against
 fixtures, a security-header analyzer covering CSP directives, HSTS, cookies and
 CORS, a 32-entry filename-traversal corpus, a threat model that names its own
